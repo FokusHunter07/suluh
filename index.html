@@ -174,8 +174,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .openf h2{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.12;margin:10px 0 4px;letter-spacing:-.01em}
 .openf .src{font-size:12px;color:var(--ink2);font-style:italic;margin-bottom:18px}
 .openf .q{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink2);border-left:2px solid rgba(90,70,48,.35);padding-left:12px;margin:0 0 18px}
-.openf p.body{font-size:16.5px;line-height:1.7;margin:0}
-.openf p.body::first-letter{font-family:var(--serif);float:left;font-size:44px;line-height:.85;padding:5px 7px 0 0;font-weight:500;color:#7a2f1d}
+.openf .body p{font-size:16.5px;line-height:1.7;margin:0 0 14px}
+.openf .body p:last-child{margin-bottom:0}
+.openf .body p:first-child::first-letter{font-family:var(--serif);float:left;font-size:44px;line-height:.85;padding:5px 7px 0 0;font-weight:500;color:#7a2f1d}
 .try{margin-top:22px;padding:14px 16px;border-radius:10px;background:rgba(122,47,29,.09);border:1px solid rgba(122,47,29,.22)}
 .try small{display:block;font-family:var(--serif);font-weight:600;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#7a2f1d;margin-bottom:6px}
 .try div{font-size:15px;line-height:1.55}
@@ -262,7 +263,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <h2 id="otitle"></h2>
       <div class="src" id="osrc"></div>
       <div class="q" id="ohook"></div>
-      <p class="body" id="obody"></p>
+      <div class="body" id="obody"></div>
       <div class="try"><small>Coba hari ini</small><div id="otry"></div></div>
     </div>
   </div>
@@ -440,7 +441,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     $('otitle').textContent = c.j;
     $('osrc').textContent = c.s ? c.s : bk.a;
     $('ohook').textContent = c.h;
-    $('obody').textContent = c.i;
+    const ob = $('obody'); ob.innerHTML = ''; c.i.split(/\n\s*\n/).forEach(t => { const p = document.createElement('p'); p.textContent = t.trim(); ob.appendChild(p); });
     $('otry').textContent = c.c;
     const leaf = $('leaf');
     leaf.classList.remove('open'); leaf.scrollTop = 0;
